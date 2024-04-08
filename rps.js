@@ -1,5 +1,5 @@
 let option =["rock", "paper", "scissor"]
-
+let count = 0;
 // to generate random choice for computer
 function getComputerChoice(){
     let computerChoice = option[Math.floor(Math.random() * option.length)];
@@ -15,7 +15,7 @@ function getUserChoice(){
 }
 
 // play round
-function play(playerSelection, computerselection, count){
+function play(playerSelection, computerselection){
     if(playerSelection === computerselection)
         console.log("tie");
     
@@ -26,14 +26,15 @@ function play(playerSelection, computerselection, count){
         
     
     else if( playerSelection === "rock" && computerselection == "scissor"){
+        count+=1;
         console.log("you win! rock beats scissor");
-        return count+1;
+        
     }
     
     else if( playerSelection === "paper" && computerselection == "rock"){
-        
+        count+=1;
         console.log("you win! paper beats rock");
-        return count+1;
+        
     }
     
     else if( playerSelection === "paper" && computerselection == "scissor"){
@@ -41,9 +42,9 @@ function play(playerSelection, computerselection, count){
     }
 
     else if( playerSelection === "scissor" && computerselection == "paper"){
-        
+        count+=1;
         console.log("you win! scissor beats paper");
-        return count+1;
+        
     }
     
     else if( playerSelection === "scissor" && computerselection == "rock"){
@@ -55,11 +56,11 @@ function play(playerSelection, computerselection, count){
 }
 
 function playGame(){
-    let count = 0;
+    
     for(let i =0; i<5; ++i){
         let userInput = getUserChoice();
         let compInput = getComputerChoice();
-        count = play(userInput, compInput, count); 
+        play(userInput, compInput); 
         console.log(count);
     }
 
