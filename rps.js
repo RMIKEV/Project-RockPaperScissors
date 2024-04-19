@@ -1,3 +1,4 @@
+//choice available
 let option = ["rock", "paper", "scissor"]
 
 function getComputerChoice() {
@@ -7,13 +8,7 @@ function getComputerChoice() {
 }
 
 
-function getUserChoice() {
-    let inp = prompt("choose anything from rock paper and scissors");
-    inp = inp.toLowerCase();
-
-    return inp;
-}
-
+// to play rounds
 let playerCount=0;
 let computerCount =0;
 
@@ -58,33 +53,20 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
-
+// DOM
 const btn = document.querySelector('#btn');
+const comp = document.querySelector(".comp");
+const p1 = document.querySelector(".p1");
 
 btn.addEventListener('click', (event)=>{
     let target = event.target;
     let computerSelection = getComputerChoice();
-    switch(target.id){
-        case 'rock': {
-            
-            playRound("rock", computerSelection);
-            break;
-        }
-
-        case 'paper': {
-            
-            playRound("paper", computerSelection);
-            break;
-        }
-
-        case 'scissor': {
-            
-            playRound("scissor", computerSelection);
-            break;
-        }
-    }
-
+    
+    comp.textContent = `Computer score: ${computerCount}`;
+    p1.textContent = `Player score: ${playerCount}`;
+    
+    playRound(target.id, computerSelection);
+    
 });
-
 
 
